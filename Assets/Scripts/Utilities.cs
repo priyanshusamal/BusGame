@@ -17,12 +17,12 @@ namespace BusGame.Scripts
         }
         public static GameObject CreateTile(GameObject obj, Transform parent = null , Vector3 localPosition = default(Vector3),float localSize = 1f)
         {
-            
-            Transform transform = obj.transform;
+            GameObject go = GameObject.Instantiate(obj,localPosition,obj.transform.rotation,parent);
+            Transform transform = go.transform;
             transform.SetParent(parent);
             transform.localPosition = localPosition;
             transform.localScale = new Vector3(localSize,localSize,localSize);
-            return obj;
+            return go; 
         }
         // public static int DeleteTile(Transform parent , )
         public static Vector3 GetMouseWorldPosition()

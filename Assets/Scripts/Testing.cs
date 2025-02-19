@@ -1,21 +1,54 @@
 using UnityEngine;
 using BusGame.Scripts;
-public class Testing : MonoBehaviour
-{
-    private Grid grid;
-    [SerializeField]private GameObject[] brush;
-    public int brushIndex = 0;
-    void Start()
-    {
-        grid = new Grid(7,10,0.5f,transform,new Vector3(-2f,-2f,0f));        
-    }
+using UnityEngine.Tilemaps;
 
-    private void Update()
+namespace BusGame.Scripts{
+    public class Testing : MonoBehaviour
     {
-        if(Input.GetMouseButtonDown(0))
+        Tilemap tilemap;
+        void Start()
         {
-            grid.SetValue(Utilities.GetMouseWorldPosition(), brush[brushIndex]);
+        tilemap = new Tilemap(8,12,1,new Vector3(4,-4,0));
         }
-    }
 
+        private void Update()
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                // tilemap.SetValue(Utilities.GetMouseWorldPosition(), brush[brushIndex]);
+                tilemap.SetTilemapSprite(Utilities.GetMouseWorldPosition(),Tilemap.TilemapObject.TilemapSprite.Ground);
+            }
+
+            
+        }
+        
+        // public class HeatMap
+    }
 }
+// using UnityEngine;
+// using BusGame.Scripts;
+// public class Testing : MonoBehaviour
+// {
+//     private Grid<TileMap> grid;
+//     [SerializeField]private GameObject[] brush;
+//     public int brushIndex = 0;
+//     void Start()
+//     {
+       
+//     }
+
+//     private void Update()
+//     {
+//         if(Input.GetMouseButtonDown(0))
+//         {
+//             grid.SetValue(Utilities.GetMouseWorldPosition(), brush[brushIndex]);
+//         }
+//         if(Input.GetMouseButtonDown(1))
+//         {
+//             grid.GetGridObject(Utilities.GetMouseWorldPosition());
+//         }
+        
+//     }
+    
+//     // public class HeatMap
+// }
